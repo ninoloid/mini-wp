@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="./styles/style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <title>Mini WP</title>
 </head>
 
@@ -16,19 +17,19 @@
   <!-- HEADER -->
   <div class="row header">
     <div class=" col grey" style="flex: 0 0 100px;">MINIWP</div>
-    <div class="col bg-warning">
+    <div class="col">
       <div class="row">
-        <div class="col-4 col-md-1">UPD</div>
-        <div class="col-4 col-md-1">COM</div>
-        <div class="col-4 col-md-1">NEW</div>
+        <div class="col-4 col-md-1"><i class="fa fa-refresh" aria-hidden="true"></i></div>
+        <div class="col-4 col-md-1"><i class="fa fa-commenting" aria-hidden="true"></i></div>
+        <div class="col-4 col-md-1"><i class="fa fa-plus-circle" aria-hidden="true"></i> New</div>
       </div>
     </div>
-    <div class="col no-padding bg-alert" style="flex: 0 0 100px;">
+    <div class="col" style="flex: 0 0 100px;">
       <div class="row">
         <div class="col">Nama</div>
       </div>
     </div>
-    <div class="col no-padding bg-success" style="flex: 0 0 50px;">
+    <div class="col" style="flex: 0 0 50px;">
       <div class="row">
         <div class="col">FOTO</div>
       </div>
@@ -130,6 +131,7 @@
         </div>
       </div>
 
+      <!-- ADD POST -->
       <div class="row newpost" style="margin-top: 25px;">
         <div class="col">
           <h1>Add New Post</h1>
@@ -137,7 +139,7 @@
         <div class="col-12">
           <div class="card text-center">
             <div class=" card-header">
-              Quick Draft
+              Add New Post
             </div>
             <div class="card-body">
               <div class="cardcontent nopadding">
@@ -148,7 +150,7 @@
                         placeholder="Enter the title here">
                     </div>
                   </div>
-                  <div class="row" style="margin: 10px 0;">
+                  <!-- <div class="row" style="margin: 10px 0;">
                     <div class="col">
                       <button>BOLD</button>
                       <button>ITALIC</button>
@@ -163,7 +165,7 @@
                       <button>BTN8</button>
                       <button>BTN9</button>
                     </div>
-                  </div>
+                  </div> -->
                   <div class="row">
                     <div class="col">
                       <textarea name="draftContent" id="draftContent" style="width: 100%; height: 30vh;"
@@ -183,6 +185,30 @@
           </div>
         </div>
       </div>
+      <!-- END OF ADD POST -->
+
+
+      <div class="row newpost" style="margin-top: 25px;">
+        <div class="col">
+          <h1>Blog Posts</h1>
+        </div>
+        <div class="col-12">
+          <div class="card text-center">
+            <div class=" card-header">
+              <button>Published</button>
+              <button>Drafts</button>
+            </div>
+            <!-- ISINYA DISINI -->
+            <div class="card-body articleList">
+
+            </div>
+            <!--  -->
+            <div class="card-footer text-muted"></div>
+          </div>
+        </div>
+      </div>
+
+
 
     </div>
 
