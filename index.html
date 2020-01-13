@@ -21,7 +21,7 @@
       <div class="row">
         <div class="col-4 col-md-1"><i class="fa fa-refresh" aria-hidden="true"></i></div>
         <div class="col-4 col-md-1"><i class="fa fa-commenting" aria-hidden="true"></i></div>
-        <div class="col-4 col-md-1"><i class="fa fa-plus-circle" aria-hidden="true"></i> New</div>
+        <div class="col-4 col-md-1"><i class="fa fa-plus-circle" aria-hidden="true"></i></div>
       </div>
     </div>
     <div class="col" style="flex: 0 0 100px;">
@@ -67,8 +67,8 @@
             <div class="cardtitle">Next Steps</div>
             <div class="cardcontent">
               <p class="cardtext">1 <a href="#">Write your first blog post</a></p>
-              <p class="cardtext">2 <a href="#">Write your first blog post</a></p>
-              <p class="cardtext">3 <a href="#">Write your first blog post</a></p>
+              <p class="cardtext">2 <a href="#">Add an About page</a></p>
+              <p class="cardtext">3 <a href="#">View your site</a></p>
             </div>
           </div>
         </div>
@@ -77,8 +77,8 @@
             <div class="cardtitle">More Actions</div>
             <div class="cardcontent">
               <p class="cardtext">Manage <a href="#">widgets</a> or <a href="#">menus</a></p>
-              <p class="cardtext">2 <a href="#">Turn comments on or off</a></p>
-              <p class="cardtext">3 <a href="#">Learn more about getting started</a></p>
+              <p class="cardtext"><a href="#">Turn comments on or off</a></p>
+              <p class="cardtext"><a href="#">Learn more about getting started</a></p>
             </div>
           </div>
         </div>
@@ -86,6 +86,7 @@
 
       <div class="row" style="margin-top: 25px;">
         <div class="col-12 col-md-6 ">
+          <!-- AT A GLANCE -->
           <div class="card text-center">
             <div class="card-header">
               At a Glance
@@ -97,7 +98,25 @@
             </div>
             <div class="card-footer text-muted"></div>
           </div>
+          <!-- END OF AT A GLANCE -->
+
+          <!-- ACTIVITY -->
+          <div class="card text-center">
+            <div class="card-header">
+              Activity
+            </div>
+            <div class="card-body">
+              Rencently Published
+            </div>
+            <div class="card-text recentlyPublished">
+              <!-- ISINYA DISINI -->
+            </div>
+            <div class="card-footer text-muted"></div>
+          </div>
         </div>
+        <!-- END OF ACTIVITY -->
+
+        <!-- QUICK DRAFT -->
         <div class="col-12 col-md-6 ">
           <div class="card text-center">
             <div class=" card-header">
@@ -129,6 +148,7 @@
             <div class="card-footer text-muted"></div>
           </div>
         </div>
+        <!-- END OF QUICK DRAFT -->
       </div>
 
       <!-- ADD POST -->
@@ -187,16 +207,16 @@
       </div>
       <!-- END OF ADD POST -->
 
-
-      <div class="row newpost" style="margin-top: 25px;">
+      <!-- BLOG POST -->
+      <div class="row blogpost" style="margin-top: 25px;">
         <div class="col">
           <h1>Blog Posts</h1>
         </div>
         <div class="col-12">
           <div class="card text-center">
             <div class=" card-header">
-              <button>Published</button>
-              <button>Drafts</button>
+              <button class="btn btn-primary">Published</button>
+              <button class="btn btn-primary">Drafts</button>
             </div>
             <!-- ISINYA DISINI -->
             <div class="card-body articleList">
@@ -207,16 +227,9 @@
           </div>
         </div>
       </div>
-
-
-
+      <!-- END OF BLOG POST -->
     </div>
-
-    <br>
-
-
     <!-- END OF CONTENT -->
-
   </div>
   <!-- END OF CONTENT CONTAINER -->
 
