@@ -16,9 +16,11 @@ new Vue({
   },
   methods: {
     getArticles() {
+      const token = localStorage.getItem('user_token')
       axios({
         method: 'get',
         url: 'http://localhost:3000/articles',
+        headers: { 'user_token': token }
 
       })
         .then(({ data }) => {
@@ -30,10 +32,11 @@ new Vue({
     },
 
     getOne(id) {
+      const token = localStorage.getItem('user_token')
       axios({
         method: 'get',
         url: 'http://localhost:3000/articles/${id}',
-
+        headers: { 'user_token': token }
       })
         .then(({ data }) => {
           this.title = data.title
@@ -45,6 +48,7 @@ new Vue({
     },
 
     addArticle() {
+      const token = localStorage.getItem('user_token')
       axios({
         method: 'post',
         url: 'http://localhost:3000/articles',
@@ -53,7 +57,8 @@ new Vue({
           content: this.content,
           created_at: new Date().toDateString(),
           published: this.published
-        }
+        },
+        headers: { 'user_token': token }
 
       })
         .then(() => {
@@ -69,9 +74,11 @@ new Vue({
     },
 
     deleteArticle(id) {
+      const token = localStorage.getItem('user_token')
       axios({
         method: 'delete',
-        url: `http://localhost:3000/articles/${id}`
+        url: `http://localhost:3000/articles/${id}`,
+        headers: { 'user_token': token }
       })
         .then(() => {
           this.getArticles()
@@ -93,6 +100,7 @@ new Vue({
     },
 
     editArticle(id) {
+      const token = localStorage.getItem('user_token')
       axios({
         method: 'put',
         url: `http://localhost:3000/articles/${id}`,
@@ -101,7 +109,8 @@ new Vue({
           content: this.content,
           created_at: new Date().toDateString(),
           published: this.published
-        }
+        },
+        headers: { 'user_token': token }
       })
         .then(() => {
           this.getArticles()
@@ -117,9 +126,6 @@ new Vue({
     },
 
     userLogin() {
-      console.log(this.email)
-      console.log(this.username)
-      console.log(this.password)
       axios({
         method: 'post',
         url: 'http://localhost:3000/user/login',
@@ -129,11 +135,16 @@ new Vue({
         }
       })
         .then(success => {
-          console.log(success.data)
           console.log('sukses', success)
-          // this.currentPage = dashboard
+          localStorage.setItem('user_token', success.data.token)
+          this.currentPage = 'dashboard'
         })
         .catch(err => console.log(err))
+    },
+
+    userLogout() {
+      localStorage.removeItem('user_token')
+      this.currentPage = 'login'
     }
   }
 })

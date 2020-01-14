@@ -28,8 +28,11 @@
           </div> -->
           <!-- <button class="headerbutton fa fa-plus-circle" @click="redirector('addPost')"></button>
           <button class="headerbutton fa fa-book" @click="redirector('blogPost')"></button> -->
-          <button class="headerbutton">LOGIN</button>
-          <!-- <button class="headerbutton">LOGOUT</button> -->
+          <!-- <button class="headerbutton">LOGIN</button> -->
+          <!-- <button class="headerbutton" @click="userLogout">LOGOUT</button> -->
+          <div v-if="currentPage !== 'login'">
+            <button class="headerbutton" @click="userLogout">LOGOUT</button>
+          </div>
         </div>
       </div>
       <div class="col" style="flex: 0 0 100px;">
