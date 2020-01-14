@@ -4,8 +4,14 @@
   "description": "Mini WP Hacktiv8",
   "main": "app.js",
   "scripts": {
+    "dev": "nodemon app",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ahmad MSA",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.8.7"
+  }
 }

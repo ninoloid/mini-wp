@@ -59,9 +59,9 @@ body {
 
 /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
 div.content {
-  margin: 50px 0 0 150px;
+  margin: 10px 0 0 150px;
   padding: 1px 16px;
-  height: 1000px;
+  /* height: 1000px; */
   width: 100%;
 }
 
@@ -143,4 +143,16 @@ div.content {
     text-align: center;
     float: none;
   }
+}
+
+.headerbutton {
+  padding: 0 25px;
+  line-height: 50px;
+  border: 0;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.headerbutton:hover {
+  border: 0;
+  background-color: rgba(0, 0, 0, 0.5);
 }
