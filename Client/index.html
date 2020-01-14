@@ -14,60 +14,65 @@
 
 
 <body>
-  <!-- HEADER -->
-  <div class="row header">
-    <div class=" col grey" style="flex: 0 0 100px;">MINIWP</div>
-    <div class="col">
-      <div class="row">
-        <div class="col-4 col-md-1"><i class="fa fa-refresh" aria-hidden="true"></i></div>
-        <div class="col-4 col-md-1"><i class="fa fa-commenting" aria-hidden="true"></i></div>
-        <div class="col-4 col-md-1" @click="redirector('addPost')"><i class="fa fa-plus-circle" aria-hidden="true"
-            @click="redirector('addPost')"></i>
+  <!-- ------------------------------------------------ VUE APP CONTAINER ------------------------------------------------ -->
+  <div id="app">
+    <!-- HEADER -->
+    <div class="row header">
+      <div class=" col grey" style="flex: 0 0 50px;"><i class="fa fa-wordpress" aria-hidden="true"></i></div>
+      <div class="col">
+        <div class="row">
+          <!-- <div class="col-4 col-md-1"><i class="fa fa-refresh" aria-hidden="true"></i></div>
+          <div class="col-4 col-md-1"><i class="fa fa-commenting" aria-hidden="true"></i></div>
+          <div class="col-4 col-md-1" @click="redirector('addPost')"><i class="fa fa-plus-circle" aria-hidden="true"
+              @click="redirector('addPost')"></i>
+          </div> -->
+          <!-- <button class="headerbutton fa fa-plus-circle" @click="redirector('addPost')"></button>
+          <button class="headerbutton fa fa-book" @click="redirector('blogPost')"></button> -->
+          <button class="headerbutton">LOGIN</button>
+          <!-- <button class="headerbutton">LOGOUT</button> -->
+        </div>
+      </div>
+      <div class="col" style="flex: 0 0 100px;">
+        <div class="row">
+          <div class="col">Nama</div>
+        </div>
+      </div>
+      <div class="col" style="flex: 0 0 50px;">
+        <div class="row">
+          <div class="col">FOTO</div>
         </div>
       </div>
     </div>
-    <div class="col" style="flex: 0 0 100px;">
-      <div class="row">
-        <div class="col">Nama</div>
+    <!-- END OF HEADER -->
+
+
+    <!-- CONTENT CONTAINER -->
+    <div class="container">
+
+      <!-- SIDEBAR -->
+      <div class="sidebar grey">
+        <!-- <a @click="redirector('blogPost')">Post</a> -->
+        <a style="text-align: center;" @click="redirector('addPost')"><i class="fa fa-plus-circle"></i></a>
+        <a style="text-align: center;" @click="redirector('blogPost')"><i class="fa fa-book"></i></a>
       </div>
-    </div>
-    <div class="col" style="flex: 0 0 50px;">
-      <div class="row">
-        <div class="col">FOTO</div>
-      </div>
-    </div>
-  </div>
-  <!-- END OF HEADER -->
+      <!-- END OF SIDEBAR -->
 
+      <!-- CONTENT -->
+      <div class="content">
 
-  <!-- CONTENT CONTAINER -->
-  <div class="container">
-
-    <!-- SIDEBAR -->
-    <div class="sidebar grey">
-      <a class="active">Home</a>
-      <a onclick="tes()">News</a>
-      <a>Contact</a>
-      <a>About</a>
-    </div>
-    <!-- END OF SIDEBAR -->
-
-    <!-- CONTENT -->
-    <div class="content">
-
-      <!-- --------------------------------------------- VUE APP CONTAINER --------------------------------------------- -->
-      <div id="app">
+        <!-- -------------------------------------------- VUE PAGE CONTAINER -------------------------------------------- -->
+        <!-- <div id="app"> -->
         <div v-if="currentPage==='login'" id="login">
           <div class="row logincontainer" style="background-color: darkgray; height: 70vh;">
             <div class="col-12 mx-auto my-auto logincard" style="flex-basis: 400px; height: 220px;">
               <div class="cardcontainer">
                 <div class="cardtitle">Login</div>
                 <div class="cardcontent">
-                  <form method="post" v-on:submit.prevent="loginUser">
-                    <input type="email" name="userEmail" id="userEmail" placeholder="Email">
-                    <input type="password" name="userPassword" id="userPassword">
+                  <form method="post" v-on:submit.prevent="userLogin">
+                    <input type="email" v-model="email" placeholder="Email">
+                    <input type="password" v-model="password">
                     <p>
-                      <button class="btn btn-primary" style="margin-bottom: 100px;">LOGIN</button>
+                      <button class="btn btn-primary" style="margin-bottom: 100px;" type="submit">LOGIN</button>
                       <button class="btn btn-primary" style="margin-bottom: 100px;">REGISTER</button>
                     </p>
                   </form>

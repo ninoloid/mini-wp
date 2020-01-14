@@ -1,12 +1,15 @@
 new Vue({
   el: "#app",
   data: {
-    currentPage: 'blogPost',
+    currentPage: 'login',
     postId: '',
     title: '',
     content: '',
     published: false,
-    articles: []
+    articles: [],
+    username: '',
+    email: '',
+    password: ''
   },
   created() {
     this.getArticles();
@@ -99,7 +102,6 @@ new Vue({
           created_at: new Date().toDateString(),
           published: this.published
         }
-
       })
         .then(() => {
           this.getArticles()
@@ -112,6 +114,26 @@ new Vue({
         .catch(err => {
           console.log(err)
         })
+    },
+
+    userLogin() {
+      console.log(this.email)
+      console.log(this.username)
+      console.log(this.password)
+      axios({
+        method: 'post',
+        url: 'http://localhost:3000/user/login',
+        data: {
+          email: this.email,
+          password: this.password
+        }
+      })
+        .then(success => {
+          console.log(success.data)
+          console.log('sukses', success)
+          // this.currentPage = dashboard
+        })
+        .catch(err => console.log(err))
     }
   }
 })
