@@ -35,7 +35,6 @@ module.exports = {
           if (valid) {
             const token = jwt.sign({ _id: user._id }, process.env.SECRET)
             req.headers.user_token = token
-            req.activeUserId = user._id
             res
               .status(200)
               .json({ token })

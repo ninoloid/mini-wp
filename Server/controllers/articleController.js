@@ -1,11 +1,11 @@
 const { Article } = require('../models')
-const authenticated = require('../middlewares/authentication')
 
 module.exports = {
   addArticle(req, res) {
+    const UserId = req.activeUserId
     const { title, content, published, img_url } = req.body
     Article
-      .create({ title, content, published, img_url })
+      .create({ title, content, published, img_url, UserId })
       .then(success => {
         res
           .status(201)
