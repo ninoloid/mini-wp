@@ -1,4 +1,5 @@
 const { Article } = require('../models')
+const authenticated = require('../middlewares/authentication')
 
 module.exports = {
   addArticle(req, res) {

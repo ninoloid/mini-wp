@@ -9,4 +9,4 @@ const connect = () => {
   })
 }
 
-module.exports = connect
+module.exports = { config: connect }
