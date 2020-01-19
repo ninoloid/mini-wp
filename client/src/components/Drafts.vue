@@ -4,7 +4,7 @@
       <div class="card text-center">
         <div class="card-header"></div>
         <!-- ISINYA DISINI -->
-        <div class="card-header grey">PUBLISHED</div>
+        <div class="card-header grey">DRAFTS</div>
         <div class="card-body articleList" v-for="article in published" :key="article._id">
           <div class="card" style="margin-bottom: 0;">
             <div class="card-body">
@@ -16,7 +16,7 @@
               <button class="btn btn-danger" @click="deleteArticle(article._id)">Delete</button>
               <button
                 class="btn btn-success"
-                @click.prevent="toEditPage(article._id, article.title, article.content, 'blogPost')"
+                @click.prevent="toEditPage(article._id, article.title, article.content, 'drafts')"
                 :postId="postId"
                 :title="title"
                 :content="content"
@@ -55,7 +55,7 @@ export default {
         headers: { user_token: token }
       })
         .then(({ data }) => {
-          this.published = data.filter(article => article.published);
+          this.published = data.filter(article => !article.published);
         })
         .catch(err => {
           console.log(err);

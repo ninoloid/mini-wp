@@ -45,7 +45,37 @@
 </template>
 
 <script>
-export default {};
+import axios from "axios";
+export default {
+  props: ["postId", "title", "content", "current"],
+  methods: {
+    editArticle(id) {
+      const token = localStorage.getItem("user_token");
+      axios({
+        method: "put",
+        url: `http://localhost:3000/articles/${id}`,
+        data: {
+          title: this.title,
+          content: this.content,
+          created_at: new Date().toDateString(),
+          published: this.published
+        },
+        headers: { user_token: token }
+      })
+        .then(() => {
+          this.postId = "";
+          this.title = "";
+          this.content = "";
+          this.published = false;
+          console.log(this.current);
+          this.$emit("change-page", this.current);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  }
+};
 </script>
 
 <style>

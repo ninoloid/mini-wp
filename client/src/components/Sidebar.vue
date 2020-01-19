@@ -7,6 +7,9 @@
     <a style="text-align: center;" @click="changePage('blogPost')">
       <i class="fa fa-book"></i>
     </a>
+    <a style="text-align: center;" @click="changePage('drafts')">
+      <i class="fas fa-edit"></i>
+    </a>
   </div>
   <!-- END OF SIDEBAR -->
 </template>

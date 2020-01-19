@@ -39,13 +39,25 @@
 
       <!-- BLOG POST -->
       <div v-else-if="currentPage==='blogPost'" id="blogPost">
-        <MwpBlogPost></MwpBlogPost>
+        <MwpBlogPost @change-page="redirector" @edit-article="passToEdit"></MwpBlogPost>
       </div>
       <!-- END OF BLOG POST -->
 
+      <!-- DRAFTS -->
+      <div v-else-if="currentPage==='drafts'" id="drafts">
+        <MwpDrafts @change-page="redirector" @edit-article="passToEdit"></MwpDrafts>
+      </div>
+      <!-- END OF DRAFTS -->
+
       <!-- EDIT POST -->
       <div v-else-if="currentPage==='editPost'" id="editPost">
-        <MwpEditPost></MwpEditPost>
+        <MwpEditPost
+          :postId="postId"
+          :title="title"
+          :content="content"
+          :current="current"
+          @change-page="redirector"
+        ></MwpEditPost>
       </div>
       <!-- END OF EDIT POST -->
     </div>
@@ -62,15 +74,17 @@ import MwpUppercard from "./Uppercard";
 import MwpLowercard from "./Lowercard";
 import MwpAddPost from "./AddPost";
 import MwpBlogPost from "./BlogPost";
+import MwpDrafts from "./Drafts";
 import MwpEditPost from "./EditPost";
 
 export default {
   data() {
     return {
       currentPage: "login",
-      username: "",
-      email: "",
-      password: ""
+      postId: "",
+      title: "",
+      content: "",
+      current: ""
     };
   },
   components: {
@@ -81,11 +95,19 @@ export default {
     MwpLowercard,
     MwpAddPost,
     MwpBlogPost,
+    MwpDrafts,
     MwpEditPost
   },
   methods: {
     redirector(page) {
+      console.log(page);
       this.currentPage = page;
+    },
+    passToEdit(id, title, content, current) {
+      this.postId = id;
+      this.title = title;
+      this.content = content;
+      this.current = current;
     }
   }
 };

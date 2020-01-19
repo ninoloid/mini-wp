@@ -46,7 +46,6 @@ export default {
           console.log("sukses login", success);
           localStorage.setItem("user_token", success.data.token);
           this.$emit("change-page", "dashboard");
-          // this.getArticles();
         })
         .catch(err => console.log(err));
     }
