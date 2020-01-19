@@ -72,7 +72,7 @@ export default {
           this.getArticles();
         })
         .catch(err => {
-          console.log(err);
+          this.$emit("error-message", "you're not authorized");
         });
     },
     toEditPage(id, title, content, current) {

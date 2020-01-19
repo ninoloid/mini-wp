@@ -7,15 +7,21 @@
 
     <!-- CONTENT -->
     <div class="content">
+      <MwpError v-if="error" :error="error"></MwpError>
       <!-- LOGIN -->
       <div v-if="currentPage==='login'" id="login">
-        <MwpLogin @change-page="redirector"></MwpLogin>
+        <MwpLogin
+          @change-page="redirector"
+          @logged-in="activeUser"
+          :error="error"
+          @error-message="errorHandler"
+        ></MwpLogin>
       </div>
       <!-- END OF LOGIN -->
 
       <!-- REGISTER -->
       <div v-if="currentPage==='register'" id="register">
-        <MwpRegister @change-page="redirector"></MwpRegister>
+        <MwpRegister :error="error" @error-message="errorHandler" @change-page="redirector"></MwpRegister>
       </div>
       <!-- END OF REGISTER -->
 
@@ -39,7 +45,12 @@
 
       <!-- BLOG POST -->
       <div v-else-if="currentPage==='blogPost'" id="blogPost">
-        <MwpBlogPost @change-page="redirector" @edit-article="passToEdit"></MwpBlogPost>
+        <MwpBlogPost
+          :error="error"
+          @error-message="errorHandler"
+          @change-page="redirector"
+          @edit-article="passToEdit"
+        ></MwpBlogPost>
       </div>
       <!-- END OF BLOG POST -->
 
@@ -76,15 +87,18 @@ import MwpAddPost from "./AddPost";
 import MwpBlogPost from "./BlogPost";
 import MwpDrafts from "./Drafts";
 import MwpEditPost from "./EditPost";
+import MwpError from "./Error";
 
 export default {
+  props: ["currentPage", "user", "profilePic"],
   data() {
     return {
-      currentPage: "login",
+      // currentPage: "login",
       postId: "",
       title: "",
       content: "",
-      current: ""
+      current: "",
+      error: ""
     };
   },
   components: {
@@ -96,7 +110,8 @@ export default {
     MwpAddPost,
     MwpBlogPost,
     MwpDrafts,
-    MwpEditPost
+    MwpEditPost,
+    MwpError
   },
   methods: {
     redirector(page) {
@@ -108,6 +123,17 @@ export default {
       this.title = title;
       this.content = content;
       this.current = current;
+    },
+    activeUser(name, picture) {
+      this.user = name;
+      this.picture = picture;
+      this.$emit("registered-user", this.user, this.picture);
+    },
+    errorHandler(err) {
+      this.error = err;
+      setTimeout(() => {
+        this.error = "";
+      }, 2500);
     }
   }
 };

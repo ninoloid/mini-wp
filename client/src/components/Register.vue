@@ -20,7 +20,7 @@
             />
             <input
               style="margin-bottom: 20px;"
-              type="retype-password"
+              type="password"
               v-model="retype"
               placeholder="Retype your password"
             />
@@ -41,29 +41,43 @@ export default {
     return {
       username: "",
       email: "",
-      password: ""
+      password: "",
+      retype: ""
     };
   },
   methods: {
     userRegister() {
-      axios({
-        method: "post",
-        url: "http://localhost:3000/user/register",
-        data: {
-          username: this.username,
-          email: this.email,
-          password: this.password
-        }
-      })
-        .then(success => {
-          console.log("sukses register", success);
-          this.email = "";
-          this.password = "";
-          this.retype = "";
-          localStorage.setItem("user_token", success.data.token);
-          this.$emit("change-page", "dashboard");
+      if (this.password !== this.retype) {
+        this.$emit("error-message", "Password and retype do not match");
+        this.password = "";
+        this.retype = "";
+      } else {
+        axios({
+          method: "post",
+          url: "http://localhost:3000/user/register",
+          data: {
+            username: this.username,
+            email: this.email,
+            password: this.password
+          }
         })
-        .catch(err => console.log(err));
+          .then(success => {
+            console.log("sukses register", success);
+            this.email = "";
+            this.password = "";
+            this.retype = "";
+            localStorage.setItem("user_token", success.data.token);
+            this.$emit("change-page", "dashboard");
+          })
+          .catch(err => {
+            this.$emit(
+              "error-message",
+              "This email is already registered in our server, please use another one"
+            );
+            this.email = "";
+            console.log(err);
+          });
+      }
     }
   }
 };

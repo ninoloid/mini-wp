@@ -116,6 +116,12 @@ div.content {
   padding: 20px;
 }
 
+.error {
+  justify-content: center;
+  align-content: center;
+  background-color: #ff6666;
+}
+
 
 
 /* On screens that are less than 700px wide, make the sidebar into a topbar */

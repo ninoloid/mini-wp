@@ -32,6 +32,7 @@ export default {
       password: ""
     };
   },
+  props: ["error"],
   methods: {
     userLogin() {
       axios({
@@ -43,11 +44,18 @@ export default {
         }
       })
         .then(success => {
+          const { token, username, img_url } = success.data;
           console.log("sukses login", success);
-          localStorage.setItem("user_token", success.data.token);
           this.$emit("change-page", "dashboard");
+          this.$emit("logged-in", username, img_url);
+          localStorage.setItem("user_token", token);
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+          this.$emit(
+            "error-message",
+            "Email isn't registered or wrong password"
+          );
+        });
     }
   }
 };
