@@ -22,7 +22,7 @@
       <!-- DASHBOARD -->
       <div v-else-if="currentPage==='dashboard'" id="dashboard">
         <!-- UPPERCARD -->
-        <MwpUppercard></MwpUppercard>
+        <!-- <MwpUppercard></MwpUppercard> -->
         <!-- END OF UPPERCARD -->
 
         <!-- LOWERCARD -->
