@@ -1,6 +1,6 @@
 <template>
   <div>
-    <MwpHeader :currentPage="currentPage" :user="user" :profilePic="profilePic"></MwpHeader>
+    <MwpHeader :currentPage="currentPage" :user="user" :profilePic="profilePic" @logout="loggedOut"></MwpHeader>
     <MwpContainer
       :currentPage="currentPage"
       :user="user"
@@ -18,7 +18,7 @@ export default {
     return {
       user: "",
       profilePic: "",
-      currentPage: "register"
+      currentPage: "dashboard"
     };
   },
   components: {
@@ -29,11 +29,14 @@ export default {
     setUser(username, pic) {
       this.user = username;
       this.profilePic = pic;
+    },
+    loggedOut(page) {
+      this.currentPage = page;
     }
   },
   created() {
-    // if (!localStorage.getItem("user_token")) this.currentPage = "login";
-    // else this.currentPage = "dashboard";
+    if (!localStorage.getItem("user_token")) this.currentPage = "login";
+    else this.currentPage = "dashboard";
   }
 };
 </script>

@@ -19,14 +19,20 @@
       </b-row>
     </b-col>
     <b-col style="flex: 0 0 100px; padding: 0;" v-if="currentPage !== 'login'">
-      <button class="headerbutton" @click="userLogout">LOGOUT</button>
+      <button class="headerbutton" @click="userLogout('login')">LOGOUT</button>
     </b-col>
   </b-row>
 </template>
 
 <script>
 export default {
-  props: ["currentPage", "user", "profilePic"]
+  props: ["currentPage", "user", "profilePic"],
+  methods: {
+    userLogout(page) {
+      localStorage.removeItem("user_token");
+      this.$emit("logout", page);
+    }
+  }
 };
 </script>
 

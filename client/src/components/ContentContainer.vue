@@ -2,7 +2,7 @@
   <!-- --------------------------------------------- VUE PAGE CONTAINER -------------------------------------------- -->
   <div class="container">
     <!-- SIDEBAR -->
-    <MwpSidebar @change-page="redirector"></MwpSidebar>
+    <MwpSidebar :currentPage="currentPage" @change-page="redirector"></MwpSidebar>
     <!-- END OF SIDEBAR -->
 
     <!-- CONTENT -->

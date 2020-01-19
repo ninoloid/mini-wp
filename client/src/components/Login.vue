@@ -6,13 +6,18 @@
         <div class="cardcontent">
           <form method="post" v-on:submit.prevent="userLogin">
             <input type="email" v-model="email" placeholder="Email" />
-            <input type="password" v-model="password" />
+            <input
+              type="password"
+              v-model="password"
+              placeholder="Password"
+              style="margin-bottom:20px"
+            />
             <p>
               <button class="btn btn-primary" style="margin-bottom: 100px;" type="submit">LOGIN</button>
               <button
                 class="btn btn-primary"
                 style="margin-bottom: 100px;"
-                @click="redirector('register')"
+                @click="toRegister"
               >REGISTER</button>
             </p>
           </form>
@@ -56,6 +61,9 @@ export default {
             "Email isn't registered or wrong password"
           );
         });
+    },
+    toRegister() {
+      this.$emit("change-page", "register");
     }
   }
 };

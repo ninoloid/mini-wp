@@ -86,6 +86,7 @@ export default {
         })
         .catch(err => {
           console.log(err);
+          this.$emit("error-message", "You're not authorized");
         });
     }
   }
