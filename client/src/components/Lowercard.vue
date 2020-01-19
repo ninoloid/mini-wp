@@ -73,7 +73,43 @@
 </template>
 
 <script>
-export default {};
+import axios from "axios";
+export default {
+  data() {
+    return {
+      title: this.title,
+      content: this.content,
+      created_at: new Date().toDateString(),
+      published: this.published
+    };
+  },
+  methods: {
+    addArticle() {
+      const token = localStorage.getItem("user_token");
+      axios({
+        method: "post",
+        url: "http://localhost:3000/articles",
+        data: {
+          title: this.title,
+          content: this.content,
+          created_at: new Date().toDateString(),
+          published: this.published
+        },
+        headers: { user_token: token }
+      })
+        .then(() => {
+          this.title = "";
+          this.content = "";
+          this.published = false;
+          this.$emit("change-page", "blogPost");
+        })
+        .catch(err => {
+          console.log(err);
+          this.$emit("error-message", "You're not authorized");
+        });
+    }
+  }
+};
 </script>
 
 <style>
