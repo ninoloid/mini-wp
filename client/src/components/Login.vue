@@ -42,7 +42,8 @@ export default {
     userLogin() {
       axios({
         method: "post",
-        url: "http://localhost:3000/user/login",
+        url:
+          "http://ec2-3-1-81-193.ap-southeast-1.compute.amazonaws.com:3000/user/login",
         data: {
           email: this.email,
           password: this.password

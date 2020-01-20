@@ -51,7 +51,8 @@ export default {
       const token = localStorage.getItem("user_token");
       axios({
         method: "get",
-        url: "http://localhost:3000/articles",
+        url:
+          "http://ec2-3-1-81-193.ap-southeast-1.compute.amazonaws.com:3000/articles",
         headers: { user_token: token }
       })
         .then(({ data }) => {
@@ -65,7 +66,7 @@ export default {
       const token = localStorage.getItem("user_token");
       axios({
         method: "delete",
-        url: `http://localhost:3000/articles/${id}`,
+        url: `http://ec2-3-1-81-193.ap-southeast-1.compute.amazonaws.com:3000/articles/${id}`,
         headers: { user_token: token }
       })
         .then(() => {

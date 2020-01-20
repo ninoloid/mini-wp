@@ -4,6 +4,7 @@
   "description": "Ninoloid MiniWP Client",
   "main": "index.html",
   "scripts": {
+    "start": "NODE_ENV=production node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ahmad MSA",
@@ -18,6 +19,7 @@
   },
   "devDependencies": {
     "@vue/component-compiler-utils": "^3.1.1",
+    "cssnano": "^4.1.10",
     "vue-template-compiler": "^2.6.11"
   }
 }

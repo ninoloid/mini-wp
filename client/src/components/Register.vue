@@ -67,11 +67,15 @@ export default {
         formData.append("email", this.email);
         formData.append("password", this.password);
         axios
-          .post("http://localhost:3000/user/register", formData, {
-            headers: {
-              "Content-Type": "multipart/form-data"
+          .post(
+            "http://ec2-3-1-81-193.ap-southeast-1.compute.amazonaws.com:3000/user/register",
+            formData,
+            {
+              headers: {
+                "Content-Type": "multipart/form-data"
+              }
             }
-          })
+          )
           .then(success => {
             console.log("sukses register", success);
             this.email = "";

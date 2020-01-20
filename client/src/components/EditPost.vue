@@ -53,7 +53,7 @@ export default {
       const token = localStorage.getItem("user_token");
       axios({
         method: "put",
-        url: `http://localhost:3000/articles/${id}`,
+        url: `http://ec2-3-1-81-193.ap-southeast-1.compute.amazonaws.com:3000/articles/${id}`,
         data: {
           title: this.title,
           content: this.content,
